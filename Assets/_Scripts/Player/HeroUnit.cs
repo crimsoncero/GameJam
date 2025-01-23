@@ -50,7 +50,17 @@ public class HeroUnit : MonoBehaviour
         GameManager.Instance.OnGamePaused += PauseHero;
         GameManager.Instance.OnGameResumed += ResumeHero;
     }
+    public void TakeDamage(int damage)
+    {
+        if (damage < 0) return;
 
+        CurrentHealth -= damage;
+
+        if (CurrentHealth < 0)
+        {
+            Debug.Log("Player Died");
+        }
+    }
 
     #region Control Methods
 
@@ -82,6 +92,8 @@ public class HeroUnit : MonoBehaviour
     {
         PathfindingModule.ResumePathfinding();
     }
+
+    
 
 
     #endregion

@@ -734,7 +734,7 @@ GameObject:
   - component: {fileID: 412535597}
   - component: {fileID: 412535596}
   m_Layer: 7
-  m_Name: Attack Swipe
+  m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1230,7 +1230,7 @@ GameObject:
   - component: {fileID: 626781519}
   - component: {fileID: 626781517}
   m_Layer: 7
-  m_Name: Attack Direction
+  m_Name: Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

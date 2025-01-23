@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -12,7 +13,7 @@ public class EnemyUnit : MonoBehaviour
     [SerializeField] private Rigidbody2D _rb2d;
     public CircleCollider2D Collider;
     public PathfindingModule PathfindingModule;
-
+    [SerializeField] private LayerMask _attackableLayers;
     
     private ObjectPool<EnemyUnit> _pool;
 
@@ -23,6 +24,10 @@ public class EnemyUnit : MonoBehaviour
     public int MaxHealth { get { return Data.BaseMaxHealth; } }
     public float MaxSpeed { get { return Data.BaseMaxSpeed; } }
     public int Power { get { return Data.BasePower; } }
+    
+    [Header("Gameplay Stats")]
+    [SerializeField] private float _attackSpeed;
+    private bool _canAttack;
 
 
    
@@ -42,10 +47,11 @@ public class EnemyUnit : MonoBehaviour
         PathfindingModule.SetMaxSpeed(MaxSpeed);
         PathfindingModule.SetMaxAcceleration(1000);
 
-
-
         // Set Target
         PathfindingModule.SetTarget(PlayerController.Instance.Center);
+
+        // Init Stats
+        CurrentHealth = MaxHealth;
     }
 
     private void OnEnable()
@@ -60,12 +66,44 @@ public class EnemyUnit : MonoBehaviour
             GameManager.Instance.OnGamePaused -= PauseEnemy;
             GameManager.Instance.OnGameResumed -= ResumeEnemy;
         }
-       
-        _pool?.Release(this);
+
+        DestroyUnit();
     }
     public void TakeDamage(int damage)
     {
-        Debug.Log("Attacked");
+        if (damage < 0) return;
+
+        CurrentHealth -= damage;
+        
+        if(CurrentHealth < 0)
+        {
+            DestroyUnit();
+        }
+    }
+
+    private IEnumerator EnableAttack()
+    {
+        yield return new WaitForSeconds(_attackSpeed);
+        _canAttack = true;
+    }
+    private void DestroyUnit()
+    {
+        _pool?.Release(this);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if((_attackableLayers & collision.gameObject.layer) != 0)
+        {
+            if (_canAttack)
+            {
+                _canAttack = false;
+                HeroUnit hero = collision.gameObject.GetComponent<HeroUnit>();
+                hero.TakeDamage(Power);
+
+                StartCoroutine(EnableAttack());
+            }
+        }
     }
     #region Pause & Resume
 
@@ -81,7 +119,7 @@ public class EnemyUnit : MonoBehaviour
         PathfindingModule.ResumePathfinding();
     }
 
-    
+   
 
 
     #endregion
