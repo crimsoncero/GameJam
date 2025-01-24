@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b04998bea3e22ac43bc10715d897da58, type: 3}
+  m_Name: Good Place Level
+  m_EditorClassIdentifier: 
+  WaveList:
+  - Wave: {fileID: 11400000, guid: c77f702ea19334a489e0615de44be8f0, type: 2}
+    Duration: 30
+  - Wave: {fileID: 11400000, guid: 71be586a89508e74a97ee91c1ab55f73, type: 2}
+    Duration: 30
+  - Wave: {fileID: 11400000, guid: e8276549a99a0d5478e3536f13e12145, type: 2}
+    Duration: 30
+  - Wave: {fileID: 11400000, guid: b4203b7c06f4bf64fa41073e02ab58b1, type: 2}
+    Duration: 30
+  - Wave: {fileID: 11400000, guid: 25a2dff373eab644fb7f339a95ad3d9f, type: 2}
+    Duration: 100000
+  BossList: []
+  EventList: []

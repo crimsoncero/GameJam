@@ -38,7 +38,10 @@ public class LevelManager : Singleton<LevelManager>
         _currentSpawnGroup = WaveList.Current.Wave.GetSpawnGroup();
         _spawnTarget = 0;
         _waveChangeTarget = 0 + WaveList.Current.Duration;
-        _bossTarget = 0 + BossList.Current.SpawnTime;
+        if (BossList.Current != null)
+            _bossTarget = 0 + BossList.Current.SpawnTime;
+        else
+            _bossTarget = -1;
     }
 
 

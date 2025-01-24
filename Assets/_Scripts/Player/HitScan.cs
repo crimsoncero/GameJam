@@ -21,9 +21,9 @@ public class HitScan : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Triggered");
+        Debug.Log("Dealt Damage " + PlayerController.Instance.Unit.Power);
         EnemyUnit enemy = collision.GetComponent<EnemyUnit>();
-        enemy.TakeDamage(PlayerController.Instance.Data.BasePower);
+        enemy.TakeDamage(PlayerController.Instance.Unit.Power);
     }
 
 

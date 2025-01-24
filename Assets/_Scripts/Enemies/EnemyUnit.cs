@@ -16,6 +16,7 @@ public class EnemyUnit : MonoBehaviour
     [SerializeField] private LayerMask _attackableLayers;
     
     private ObjectPool<EnemyUnit> _pool;
+    private Coroutine _attackReset;
 
     // STATS::
     public int CurrentHealth { get; private set; }
@@ -58,6 +59,7 @@ public class EnemyUnit : MonoBehaviour
 
         // Init Stats
         CurrentHealth = MaxHealth;
+        _canAttack = true;
         
     }
 
@@ -84,6 +86,7 @@ public class EnemyUnit : MonoBehaviour
         
         if(CurrentHealth <= 0)
         {
+            PlayerController.Instance.Unit.GainBloodlust();
             DestroyUnit();
         }
     }
@@ -99,7 +102,10 @@ public class EnemyUnit : MonoBehaviour
         //{
         //    Destroy(gameObject);
         //}
+        if(_attackReset != null)
+        StopCoroutine(_attackReset);
         _pool?.Release(this);
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -111,8 +117,9 @@ public class EnemyUnit : MonoBehaviour
                 _canAttack = false;
                 HeroUnit hero = collision.gameObject.GetComponent<HeroUnit>();
                 hero.TakeDamage(Power);
-
-                StartCoroutine(EnableAttack());
+                
+                if(CurrentHealth > 0)
+                    _attackReset = StartCoroutine(EnableAttack());
             }
         }
     }

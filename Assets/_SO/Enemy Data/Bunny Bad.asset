@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aba35f2c959ab334cbd9d6a88976665f, type: 3}
-  m_Name: Ninja
+  m_Name: Bunny Bad
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Ninja
-  <BaseMaxHealth>k__BackingField: 5
-  <BaseMaxSpeed>k__BackingField: 4
-  <BasePower>k__BackingField: 0
+  <Name>k__BackingField: Hell Bunny
+  <BaseMaxHealth>k__BackingField: 4
+  <BaseMaxSpeed>k__BackingField: 6
+  <BasePower>k__BackingField: 4

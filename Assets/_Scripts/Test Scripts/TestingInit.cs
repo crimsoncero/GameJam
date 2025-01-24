@@ -20,5 +20,9 @@ public class TestingInit : MonoBehaviour
         {
             StartGame(); 
         }
+        if (GUI.Button(new Rect(10, 120, 150, 100), "Gain Bloodlust"))
+        {
+            PlayerController.Instance.Unit.GainBloodlust();
+        }
     }
 }

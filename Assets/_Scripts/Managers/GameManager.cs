@@ -15,7 +15,10 @@ public class GameManager : Singleton<GameManager>
     /// </summary>
     public event Action<int> OnTimerTick;
 
-   
+
+    [SerializeField] private int _damageOnTick = 3;
+    [SerializeField] private LevelData _hellLevel;
+
     /// <summary>
     /// The in game time that has passed until now, counted in seconds.
     /// </summary>
@@ -26,6 +29,7 @@ public class GameManager : Singleton<GameManager>
     /// Is the game currently paused.
     /// </summary>
     public bool IsPaused { get; private set; } = true;
+    public bool IsHell { get; private set; } = false;
     public bool IsGameActive { get; private set; } = false;
 
     private void Update()
@@ -37,9 +41,22 @@ public class GameManager : Singleton<GameManager>
             {
                 _timerSeconds -= 1;
                 Timer++;
+                
+                if(!IsHell)
+                    PlayerController.Instance.Unit.TakeDamage(_damageOnTick);
+                
                 OnTimerTick?.Invoke(Timer);
             }
         }
+    }
+
+    public void ChangeToHellLevel()
+    {
+        LevelManager.Instance.Init(_hellLevel);
+        Timer = 0;
+        _timerSeconds = 0;
+        IsHell = true;
+        OnTimerTick?.Invoke(Timer);
     }
 
     public void StartGame()

@@ -1,12 +1,13 @@
-using System;
+using MoreMountains.Tools;
 using TMPro;
 using UnityEngine;
 
-public class TestUI : MonoBehaviour
+public class TestUI : Singleton<TestUI>
 {
 
     [SerializeField] private TMP_Text _timerText;
     [SerializeField] private TMP_Text _pauseText;
+    [SerializeField] private CircularProgressBar _bubbleProgressBar;
 
 
     void Start()
@@ -16,11 +17,18 @@ public class TestUI : MonoBehaviour
         GameManager.Instance.OnGameResumed += OnPauseChange;
     }
 
+    
     private void UpdateTimerText(int timer)
     {
        _timerText.text = Helpers.SecondsToMMSS(timer);
+
     }
 
+    public void UpdateBubbleBar(int value, int min, int max)
+    {
+        _bubbleProgressBar.UpdateBar(value, min, max);
+    
+    }
     private void OnPauseChange()
     {
         if(GameManager.Instance.IsPaused)

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aba35f2c959ab334cbd9d6a88976665f, type: 3}
-  m_Name: New Yorker
+  m_Name: Bunny Good
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: New Yorker
+  <Name>k__BackingField: Bunny
   <BaseMaxHealth>k__BackingField: 2
   <BaseMaxSpeed>k__BackingField: 4
-  <BasePower>k__BackingField: 1
+  <BasePower>k__BackingField: 2
