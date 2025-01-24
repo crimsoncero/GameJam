@@ -27,11 +27,17 @@ public class EnemyUnit : MonoBehaviour
     
     [Header("Gameplay Stats")]
     [SerializeField] private float _attackSpeed;
-    private bool _canAttack;
+    private bool _canAttack = true;
 
 
-   
+    [Header("Debugging")]
+    [SerializeField] private bool _isDummy = false;
 
+    private void Start()
+    {
+        if (_isDummy)
+            CurrentHealth = MaxHealth;
+    }
     public void Initialize(EnemyData data, Vector3 position, ObjectPool<EnemyUnit> pool)
     {
         if (data.IsUnityNull())
@@ -52,6 +58,7 @@ public class EnemyUnit : MonoBehaviour
 
         // Init Stats
         CurrentHealth = MaxHealth;
+        
     }
 
     private void OnEnable()
@@ -75,7 +82,7 @@ public class EnemyUnit : MonoBehaviour
 
         CurrentHealth -= damage;
         
-        if(CurrentHealth < 0)
+        if(CurrentHealth <= 0)
         {
             DestroyUnit();
         }
@@ -88,12 +95,16 @@ public class EnemyUnit : MonoBehaviour
     }
     private void DestroyUnit()
     {
+        //if(_pool == null)
+        //{
+        //    Destroy(gameObject);
+        //}
         _pool?.Release(this);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if((_attackableLayers & collision.gameObject.layer) != 0)
+        if((_attackableLayers.value & (1 << collision.gameObject.layer)) != 0)
         {
             if (_canAttack)
             {

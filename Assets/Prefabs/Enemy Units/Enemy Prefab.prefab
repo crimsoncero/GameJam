@@ -305,3 +305,7 @@ MonoBehaviour:
   _rb2d: {fileID: 1171083374919656187}
   Collider: {fileID: 1715906947323866173}
   PathfindingModule: {fileID: -7659341251869531652}
+  _attackableLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  _attackSpeed: 1

@@ -9,16 +9,17 @@ using System.Collections;
 public class PlayerController : Singleton<PlayerController>
 {
     [field: SerializeField] public HeroData Data { get; private set; }
+    [field: SerializeField] public HeroUnit Unit { get; private set; }
     
     [SerializeField] private HeroMover _mover;
     [SerializeField] private AttackDirection _attackDirection;
-    [SerializeField] private float _attackSpeed = 0.5f;
     private bool _canAttack = true;
     public Transform Center { get { return transform; } }
 
     private void Start()
     {
         UpdateSpeed();
+        Unit.Init(Data);
     }
 
     public void UpdateSpeed()
@@ -39,7 +40,7 @@ public class PlayerController : Singleton<PlayerController>
     }
     private IEnumerator WaitForAttack()
     {
-        yield return new WaitForSeconds(_attackSpeed);
+        yield return new WaitForSeconds(Data.BaseAttackSpeed);
         _canAttack = true;
     }
 

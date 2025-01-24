@@ -23,7 +23,7 @@ public class HitScan : MonoBehaviour
     {
         Debug.Log("Triggered");
         EnemyUnit enemy = collision.GetComponent<EnemyUnit>();
-        enemy.TakeDamage(5);
+        enemy.TakeDamage(PlayerController.Instance.Data.BasePower);
     }
 
 

@@ -987,7 +987,7 @@ Transform:
   m_GameObject: {fileID: 559445597}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.104321, y: 6.014857, z: 0.07777198}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1325,6 +1325,7 @@ GameObject:
   - component: {fileID: 740804089}
   - component: {fileID: 740804091}
   - component: {fileID: 740804090}
+  - component: {fileID: 740804093}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -1345,9 +1346,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Data>k__BackingField: {fileID: 11400000, guid: 9b61c84f832dee941b41c15e6e8d78f9, type: 2}
+  <Unit>k__BackingField: {fileID: 740804093}
   _mover: {fileID: 740804092}
   _attackDirection: {fileID: 626781517}
-  _attackSpeed: 0.5
 --- !u!4 &740804088
 Transform:
   m_ObjectHideFlags: 0
@@ -1605,6 +1606,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Speed>k__BackingField: 6
   _rb2d: {fileID: 740804091}
+--- !u!114 &740804093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740804085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 951b8caf0d2bb8545aa0dbf4cab8e28e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Data>k__BackingField: {fileID: 11400000, guid: 9b61c84f832dee941b41c15e6e8d78f9, type: 2}
+  _rb2d: {fileID: 0}
+  PathfindingModule: {fileID: 0}
 --- !u!1 &743918057
 GameObject:
   m_ObjectHideFlags: 0
@@ -1755,13 +1771,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1171083374919656187, guid: 90590a9224c3c664994c621b883c1a19, type: 3}
+      propertyPath: m_Constraints
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1231239660535065941, guid: 90590a9224c3c664994c621b883c1a19, type: 3}
+      propertyPath: _isDummy
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1313759654901583066, guid: 90590a9224c3c664994c621b883c1a19, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4290991442421826110, guid: 90590a9224c3c664994c621b883c1a19, type: 3}
       propertyPath: m_Name
-      value: Enemy Prefab
+      value: Training Dummy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4290991442421826110, guid: 90590a9224c3c664994c621b883c1a19, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4452430546700873281, guid: 90590a9224c3c664994c621b883c1a19, type: 3}
       propertyPath: m_Enabled

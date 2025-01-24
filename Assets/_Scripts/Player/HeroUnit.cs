@@ -37,64 +37,21 @@ public class HeroUnit : MonoBehaviour
         Data = data;
         gameObject.name = $"Hero - {Data.name}";
 
-        PathfindingModule.SetMaxSpeed(MaxSpeed);
-        PathfindingModule.SetMaxAcceleration(1000);
+        CurrentHealth = MaxHealth;
 
-
-
-        AddCallbacks();
     }
 
-    private void AddCallbacks()
-    {
-        GameManager.Instance.OnGamePaused += PauseHero;
-        GameManager.Instance.OnGameResumed += ResumeHero;
-    }
+    
     public void TakeDamage(int damage)
     {
         if (damage < 0) return;
-
+        Debug.Log("Player Hit");
         CurrentHealth -= damage;
 
-        if (CurrentHealth < 0)
+        if (CurrentHealth <= 0)
         {
             Debug.Log("Player Died");
         }
     }
-
-    #region Control Methods
-
-    /// <summary>
-    /// Sets the velocity of the unit in the direction given using its speed.
-    /// </summary>
-    /// <param name="direction"> The direction of the movement. </param>
-    public void SetVelocity(Vector2 direction)
-    {
-        if (PathfindingModule.IsEnabled)
-            throw new System.Exception("Unit can't be controlled, using pathfinder.");
-
-        direction.Normalize();
-        _rb2d.linearVelocity = MaxSpeed * direction;
-    }
-
-    #endregion
-
-    #region Pause & Resume
-
-    private void PauseHero()
-    {
-        // Set speed to zero
-        _rb2d.linearVelocity = Vector2.zero;
-        PathfindingModule.PausePathfinding();
-    }
-
-    private void ResumeHero()
-    {
-        PathfindingModule.ResumePathfinding();
-    }
-
     
-
-
-    #endregion
 }
