@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlaylistA
   m_EditorClassIdentifier: 
   Track: 1
-  PlayOrder: 0
+  PlayOrder: 3
   RandomizeOrderSeed: 1
   PlayMode: 0
   MaxAmountOfPlays: 10
@@ -61,6 +61,9 @@ MonoBehaviour:
           m_PostInfinity: 2
           m_RotationOrder: 4
         Initialized: 0
+        ConditionPropertyName: 
+        EnumConditionPropertyName: 
+        EnumConditions: 
       Persistent: 0
       RecycleAudioSource: {fileID: 0}
       PlaybackTime: 0
@@ -153,6 +156,9 @@ MonoBehaviour:
           m_PostInfinity: 2
           m_RotationOrder: 4
         Initialized: 0
+        ConditionPropertyName: 
+        EnumConditionPropertyName: 
+        EnumConditions: 
       Persistent: 0
       RecycleAudioSource: {fileID: 0}
       PlaybackTime: 0
@@ -245,6 +251,9 @@ MonoBehaviour:
           m_PostInfinity: 2
           m_RotationOrder: 4
         Initialized: 0
+        ConditionPropertyName: 
+        EnumConditionPropertyName: 
+        EnumConditions: 
       Persistent: 0
       RecycleAudioSource: {fileID: 0}
       PlaybackTime: 0
@@ -337,6 +346,9 @@ MonoBehaviour:
           m_PostInfinity: 2
           m_RotationOrder: 4
         Initialized: 0
+        ConditionPropertyName: 
+        EnumConditionPropertyName: 
+        EnumConditions: 
       Persistent: 0
       RecycleAudioSource: {fileID: 0}
       PlaybackTime: 0
