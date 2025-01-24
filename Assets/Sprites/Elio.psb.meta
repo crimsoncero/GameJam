@@ -103,7 +103,7 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 331
+      x: 330
       y: 599
       width: 319
       height: 118
@@ -126,7 +126,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 4
+      y: 3
       width: 711
       height: 587
     spriteID: 21ff844147061974880f124185b04e0f
@@ -147,8 +147,8 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 723
-      y: 4
+      x: 722
+      y: 7
       width: 226
       height: 215
     spriteID: 80c87aeaa76b9d843b8aec734e963160
@@ -274,5 +274,5 @@ ScriptedImporter:
   spriteLibAssetName: 
   skeletonAssetName: 
   secondarySpriteTextures:
-  - name: HellTex
+  - name: _HellTex
     texture: {fileID: -8328923581568760697, guid: c46b0a28de6f4c448848c1a26a5a46d3, type: 3}

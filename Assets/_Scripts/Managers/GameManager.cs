@@ -32,6 +32,8 @@ public class GameManager : Singleton<GameManager>
     public bool IsHell { get; private set; } = false;
     public bool IsGameActive { get; private set; } = false;
 
+    [SerializeField] private VisualsController _visualsController;
+
     private void Update()
     {
         if (!IsPaused && IsGameActive)
@@ -57,6 +59,8 @@ public class GameManager : Singleton<GameManager>
         _timerSeconds = 0;
         IsHell = true;
         OnTimerTick?.Invoke(Timer);
+        MusicManager.Instance.StartBadPlace();
+        _visualsController.Morph();
     }
 
     public void StartGame()
@@ -66,6 +70,8 @@ public class GameManager : Singleton<GameManager>
         Timer = 0;
         _timerSeconds = 0;
         OnTimerTick?.Invoke(Timer);
+
+        MusicManager.Instance.StartGoodPlace();
 
         OnGameStart?.Invoke();
     }

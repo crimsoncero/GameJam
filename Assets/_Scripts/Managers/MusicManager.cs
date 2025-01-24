@@ -2,18 +2,24 @@ using MoreMountains.Feedbacks;
 using MoreMountains.Tools;
 using UnityEngine;
 
-public class MusicManager : MonoBehaviour
+public class MusicManager : Singleton<MusicManager>
 {
-    [SerializeField] MMF_Player _musicPlayer;
 
-    [SerializeField] AudioClip _goodPlaceIntro;
-    [SerializeField] AudioClip _goodPlaceLoop;
-    [SerializeField] AudioClip _badPlaceIntro;
-    [SerializeField] AudioClip _badPlaceLoop;
+    [SerializeField] AudioClip _goodPlaceMusic;
+    [SerializeField] AudioClip _badPlaceMusic;
+
+    private AudioSource _source;
 
     public void StartGoodPlace()
     {
-        MMF_MMSoundManagerSound soundFeedback = _musicPlayer.GetFeedbackOfType<MMF_MMSoundManagerSound>();
+        _source =  MMSoundManager.Instance.PlaySound(_goodPlaceMusic, MMSoundManager.MMSoundManagerTracks.Music, Vector3.zero);
+    }
+
+    public void StartBadPlace()
+    {
+        if(_source != null)
+            _source.Stop();
+        MMSoundManager.Instance.PlaySound(_badPlaceMusic, MMSoundManager.MMSoundManagerTracks.Music, Vector3.zero);
     }
 
 }
