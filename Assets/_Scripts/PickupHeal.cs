@@ -2,15 +2,12 @@ using UnityEngine;
 
 public class PickupHeal : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] private int _healAmount = 20;
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        HeroUnit hero = collision.gameObject.GetComponent<HeroUnit>();
+        hero.Heal(_healAmount);
+        Destroy(gameObject);
     }
 }

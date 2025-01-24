@@ -2,6 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using System;
 using MoreMountains.Tools;
+using UnityEngine.UI;
 
 public class HeroUnit : MonoBehaviour
 {
@@ -27,6 +28,9 @@ public class HeroUnit : MonoBehaviour
     [SerializeField] private float _bloodlustDuration = 3;
     private float _currentBloodlustDuration = 0;
     [SerializeField] private int _healAmount = 20;
+    [SerializeField] private Image _foregroundBloodlust;
+    [SerializeField] private Color _doubleBloodlustColor;
+    [SerializeField] private Color _tripleBloodlustColor;
     private void Start()
     {
         // Init the unit automatically if starting with data. (for testing mainly)
@@ -56,8 +60,15 @@ public class HeroUnit : MonoBehaviour
         {
             _currentBloodlustDuration -= Time.deltaTime;
         }
-        //_bloodlustBarLeft.UpdateBar(_currentBloodlustDuration, 0, _bloodlustDuration);
         _bloodlustBar.UpdateBar(_currentBloodlustDuration, 0, _bloodlustDuration);
+        if(_damageMultiplier == 2)
+        {
+            _foregroundBloodlust.color = _doubleBloodlustColor;
+        }
+        if(_damageMultiplier == 3)
+        {
+            _foregroundBloodlust.color = _tripleBloodlustColor;
+        }
     }
     public void GainBloodlust()
     {
@@ -67,8 +78,6 @@ public class HeroUnit : MonoBehaviour
         }
         _currentBloodlustDuration = _bloodlustDuration;
 
-        Debug.Log("Blood duration: " + _currentBloodlustDuration);
-        Debug.Log("Blood multiplier: " + _damageMultiplier);
     }
     public void TakeDamage(int damage)
     {
@@ -87,14 +96,18 @@ public class HeroUnit : MonoBehaviour
 
     }
 
-    public void Heal()
+    public void Heal(int amount = -1)
     {
-        CurrentHealth += _healAmount;
+        if (amount < 0)
+            amount = _healAmount;
+
+        CurrentHealth += amount;
         if(CurrentHealth >= MaxHealth)
         {
             CurrentHealth = MaxHealth;
         }
         TestUI.Instance.UpdateBubbleBar(CurrentHealth, 0, MaxHealth);
+        
 
     }
 

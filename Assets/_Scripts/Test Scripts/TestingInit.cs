@@ -20,9 +20,13 @@ public class TestingInit : MonoBehaviour
         {
             StartGame(); 
         }
-        if (GUI.Button(new Rect(10, 120, 150, 100), "Gain Bloodlust"))
+        if (GUI.Button(new Rect(10, 120, 150, 100), "Increase Bubble by 10"))
         {
-            PlayerController.Instance.Unit.GainBloodlust();
+            PlayerController.Instance.Unit.Heal(10);
+        }
+        if (GUI.Button(new Rect(10, 240, 150, 100), "Lower Bubble by 10"))
+        {
+            PlayerController.Instance.Unit.TakeDamage(10);
         }
     }
 }
