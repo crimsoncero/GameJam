@@ -18,10 +18,6 @@ MonoBehaviour:
   - Wave: {fileID: 11400000, guid: 71be586a89508e74a97ee91c1ab55f73, type: 2}
     Duration: 30
   - Wave: {fileID: 11400000, guid: e8276549a99a0d5478e3536f13e12145, type: 2}
-    Duration: 30
-  - Wave: {fileID: 11400000, guid: b4203b7c06f4bf64fa41073e02ab58b1, type: 2}
-    Duration: 30
-  - Wave: {fileID: 11400000, guid: 25a2dff373eab644fb7f339a95ad3d9f, type: 2}
-    Duration: 100000
+    Duration: 200000
   BossList: []
   EventList: []
