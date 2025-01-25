@@ -20,4 +20,12 @@ public class VisualsAnimator : MonoBehaviour
             anim.SetFloat(varName, value);
         }
     }
+    
+    public void SetTrigger(string varName)
+    {
+        foreach (var anim in AnimList)
+        {
+            anim.SetTrigger(varName);
+        }
+    }
 }
