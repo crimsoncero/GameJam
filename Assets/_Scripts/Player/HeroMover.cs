@@ -13,7 +13,35 @@ public class HeroMover : MonoBehaviour
     {
         GameManager.Instance.OnGamePaused += PauseMover;
     }
+    private void Update()
+    {
+        if (_rb2d != null)
+        {
+            _rb2d.linearVelocity = GameManager.Instance.IsPaused ? Vector2.zero : inputVelocity;
+        }
 
+        if(_rb2d.linearVelocity != Vector2.zero )
+        {
+            PlayerController.Instance.VisualsAnimator.SetBool("IsRunning", true);
+        }
+        else
+        {
+            PlayerController.Instance.VisualsAnimator.SetBool("IsRunning", false);
+
+        }
+
+        //flip
+        Vector3 scale = gameObject.transform.localScale;
+        if(_rb2d.linearVelocity.x > 0)
+        {
+            scale.x = 1;
+        }
+        else if(_rb2d.linearVelocity.x < 0)
+        {
+            scale.x = -1;
+        }
+        gameObject.transform.localScale = scale;
+    }
     public void Move(Vector2 direction)
     {
        
@@ -39,13 +67,7 @@ public class HeroMover : MonoBehaviour
         _rb2d.linearVelocity = Vector2.zero;
     }
 
-    private void Update()
-    {
-        if (_rb2d != null)
-        {
-            _rb2d.linearVelocity = GameManager.Instance.IsPaused ? Vector2.zero : inputVelocity;
-        }
-    }
+    
 
     #endregion
 }
