@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Bunny Bad
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Hell Bunny
-  <BaseMaxHealth>k__BackingField: 4
-  <BaseMaxSpeed>k__BackingField: 6
+  <BaseMaxHealth>k__BackingField: 3
+  <BaseMaxSpeed>k__BackingField: 7
   <BasePower>k__BackingField: 4

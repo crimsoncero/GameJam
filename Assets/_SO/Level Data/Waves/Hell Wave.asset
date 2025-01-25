@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnTime: 5
   SpawnGroups: 2
-  GroupSize: 3
+  GroupSize: 4
   EnemyList:
   - Data: {fileID: 11400000, guid: ecad87ab21e984b4aba068e579499542, type: 2}
     Count: 2
   - Data: {fileID: 11400000, guid: 20411bdf5c8f08242bc55ccb44655bf9, type: 2}
-    Count: 1
+    Count: 2
   _isValid: 1

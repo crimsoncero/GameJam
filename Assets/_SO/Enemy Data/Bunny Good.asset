@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Bunny
   <BaseMaxHealth>k__BackingField: 2
-  <BaseMaxSpeed>k__BackingField: 4
-  <BasePower>k__BackingField: 2
+  <BaseMaxSpeed>k__BackingField: 2
+  <BasePower>k__BackingField: 6
