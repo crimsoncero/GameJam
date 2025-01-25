@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PickupHeal : MonoBehaviour
@@ -9,6 +10,7 @@ public class PickupHeal : MonoBehaviour
         GameManager.Instance.ChangedToHell += DestroyOnHell;
     }
 
+   
     private void OnTriggerEnter2D(Collider2D collision)
     {
         HeroUnit hero = collision.gameObject.GetComponent<HeroUnit>();
@@ -18,6 +20,6 @@ public class PickupHeal : MonoBehaviour
 
     public void DestroyOnHell()
     {
-        Destroy(gameObject);
+            Destroy(gameObject);
     }
 }

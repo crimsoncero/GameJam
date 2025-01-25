@@ -34,6 +34,7 @@ public class VisualsController : MonoBehaviour
         {
             p.gameObject.SetActive(true);
         }
+        TestUI.Instance._bubbleProgressBar.OnHell();
     }
 
     private void ResetMats()

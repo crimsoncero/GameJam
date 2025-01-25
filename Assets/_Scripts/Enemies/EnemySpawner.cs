@@ -92,7 +92,7 @@ public class EnemySpawner : Singleton<EnemySpawner>
             // Stop spawning if there are no more eligible nodes;
             if(frontier.Count <= 0)
             {
-                Debug.LogError("Could not spawn all enemies, not enough eligible nodes");
+                Debug.LogWarning("Could not spawn all enemies, not enough eligible nodes");
                 break;
             }
 

@@ -1,6 +1,9 @@
 using MoreMountains.Feedbacks;
+using NUnit.Framework;
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 
@@ -62,6 +65,11 @@ public class GameManager : Singleton<GameManager>
         OnTimerTick?.Invoke(Timer);
         MusicManager.Instance.StartBadPlace();
         _visualsController.Morph();
+
+        List<PickupHeal> pickups = GetComponents<PickupHeal>().ToList();
+        foreach (PickupHeal h in pickups)
+            h.DestroyOnHell();
+
 
         ChangedToHell?.Invoke();
     }

@@ -12,7 +12,6 @@ public class CircularProgressBar : MonoBehaviour
     private void Start()
     {
         _foreground.DOFade(_targetFade, _breathDuration).SetEase(Ease.InOutSine).SetLoops(-1,LoopType.Yoyo);
-        GameManager.Instance.ChangedToHell += OnHell;
     }
     public void UpdateBar(float value, float min, float max)
     {

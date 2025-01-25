@@ -7,7 +7,7 @@ public class TestUI : Singleton<TestUI>
 
     [SerializeField] private TMP_Text _timerText;
     [SerializeField] private TMP_Text _pauseText;
-    [SerializeField] private CircularProgressBar _bubbleProgressBar;
+    [SerializeField] public CircularProgressBar _bubbleProgressBar;
 
 
     void Start()
