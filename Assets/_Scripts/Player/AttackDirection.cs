@@ -4,7 +4,7 @@ using UnityEngine.Rendering.Universal;
 
 public class AttackDirection : MonoBehaviour
 {
-    [SerializeField] private Animator _attackAnimator;
+    [SerializeField] private ParticleSystem _attackAnimator;
     [SerializeField] private HitScan _hitScan;
     [SerializeField] private MMF_Player _attackSFX;
     private Vector3 _lookDirection = Vector3.zero;
@@ -41,8 +41,8 @@ public class AttackDirection : MonoBehaviour
             transform.localScale = new Vector3(1, 1, 1);
         }
         _attackSFX.PlayFeedbacks();
-        _attackAnimator.gameObject.SetActive(true);
-        PlayerController.Instance.VisualsAnimator.SetTrigger("AttackTrigger");
+        _attackAnimator.Play();
+        
         _hitScan.Scan();
     }
 
