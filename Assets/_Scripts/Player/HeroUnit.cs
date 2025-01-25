@@ -4,6 +4,7 @@ using System;
 using MoreMountains.Tools;
 using UnityEngine.UI;
 using UnityEditor;
+using Unity.Cinemachine;
 
 public class HeroUnit : MonoBehaviour
 {
@@ -14,7 +15,12 @@ public class HeroUnit : MonoBehaviour
     [SerializeField] private Rigidbody2D _rb2d;
     public PathfindingModule PathfindingModule;
     [SerializeField] private MMProgressBar _bloodlustBar;
+    [SerializeField] private ParticleSystem _healVFX;
+    [SerializeField] private CinemachineBasicMultiChannelPerlin _camShake;
+    [SerializeField] private float _shakeTimer = 0.2f;
+    [SerializeField] private float _intensity = 0.5f;
 
+    private float _currentShakeTimer;
     // STATS::
     public int CurrentHealth { get; private set; }
 
@@ -70,6 +76,16 @@ public class HeroUnit : MonoBehaviour
         {
             _foregroundBloodlust.color = _tripleBloodlustColor;
         }
+        if(_currentShakeTimer > 0)
+        {
+            _currentShakeTimer -= Time.deltaTime;
+            if (_currentShakeTimer <= 0f)
+            {
+                _camShake.AmplitudeGain = 0f;
+
+            }
+        }
+       
     }
     public void GainBloodlust()
     {
@@ -86,6 +102,9 @@ public class HeroUnit : MonoBehaviour
         CurrentHealth -= damage;
 
         TestUI.Instance.UpdateBubbleBar(CurrentHealth, 0, MaxHealth);
+
+        _camShake.AmplitudeGain = _intensity;
+        _currentShakeTimer = _shakeTimer;
 
         if(CurrentHealth <= 0)
         {
@@ -122,6 +141,7 @@ public class HeroUnit : MonoBehaviour
             amount = _healAmount;
 
         CurrentHealth += amount;
+        _healVFX.Play();
         if(CurrentHealth >= MaxHealth)
         {
             CurrentHealth = MaxHealth;

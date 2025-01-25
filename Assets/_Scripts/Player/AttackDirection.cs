@@ -42,7 +42,6 @@ public class AttackDirection : MonoBehaviour
         }
         _attackSFX.PlayFeedbacks();
         _attackAnimator.gameObject.SetActive(true);
-        PlayerController.Instance.VisualsAnimator.SetTrigger("AttackTrigger");
         _hitScan.Scan();
     }
 

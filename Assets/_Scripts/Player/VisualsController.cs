@@ -1,6 +1,7 @@
 using DG.Tweening;
 using MoreMountains.Feedbacks;
 using MoreMountains.Tools;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class VisualsController : MonoBehaviour
@@ -10,6 +11,8 @@ public class VisualsController : MonoBehaviour
     [SerializeField] private Material _badMat;
    
     [SerializeField] private float _morphDuration;
+
+    [SerializeField] private List<ParticleSystem> _smokeList;
 
     [MMFInspectorButton("Morph")]
     [SerializeField] private bool morphtest;
@@ -27,12 +30,20 @@ public class VisualsController : MonoBehaviour
     {
         _goodMat.DOFloat(0, "_Fade", _morphDuration);
         _badMat.DOFloat(0, "_Fade", _morphDuration);
+        foreach(ParticleSystem p in _smokeList)
+        {
+            p.gameObject.SetActive(true);
+        }
     }
 
     private void ResetMats()
     {
         _goodMat.SetFloat("_Fade", 1);
         _badMat.SetFloat("_Fade", 1);
+        foreach (ParticleSystem p in _smokeList)
+        {
+            p.gameObject.SetActive(false);
+        }
     }
     private void OnApplicationQuit()
     {
