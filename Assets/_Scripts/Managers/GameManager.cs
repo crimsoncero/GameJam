@@ -10,6 +10,7 @@ public class GameManager : Singleton<GameManager>
     public event Action OnGameEnd;
     public event Action OnGamePaused;
     public event Action OnGameResumed;
+    public event Action ChangedToHell;
     /// <summary>
     /// Perform an action when the timer ticks a second, use only when totally needed.
     /// </summary>
@@ -61,6 +62,8 @@ public class GameManager : Singleton<GameManager>
         OnTimerTick?.Invoke(Timer);
         MusicManager.Instance.StartBadPlace();
         _visualsController.Morph();
+
+        ChangedToHell?.Invoke();
     }
 
     public void StartGame()

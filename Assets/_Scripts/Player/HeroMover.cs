@@ -30,17 +30,7 @@ public class HeroMover : MonoBehaviour
 
         }
 
-        //flip
-        Vector3 scale = gameObject.transform.localScale;
-        if(_rb2d.linearVelocity.x > 0)
-        {
-            scale.x = 1;
-        }
-        else if(_rb2d.linearVelocity.x < 0)
-        {
-            scale.x = -1;
-        }
-        gameObject.transform.localScale = scale;
+        
     }
     public void Move(Vector2 direction)
     {

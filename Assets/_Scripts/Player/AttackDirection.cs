@@ -8,9 +8,24 @@ public class AttackDirection : MonoBehaviour
     [SerializeField] private HitScan _hitScan;
     [SerializeField] private MMF_Player _attackSFX;
     private Vector3 _lookDirection = Vector3.zero;
-    
 
-  
+
+    private void Update()
+    {
+        Vector3 scale = PlayerController.Instance.VisualsAnimator.transform.localScale;
+        if(_lookDirection.x > 0)
+        {
+            scale.x = 0.2f;
+            PlayerController.Instance.VisualsAnimator.SetFloat("RunSpeed", 1);
+        }
+        else if(_lookDirection.x < 0)
+        {
+            scale.x = -0.2f;
+            PlayerController.Instance.VisualsAnimator.SetFloat("RunSpeed", -1);
+
+        }
+        PlayerController.Instance.VisualsAnimator.transform.localScale = scale;
+    }
 
     public void Attack()
     {
@@ -25,7 +40,7 @@ public class AttackDirection : MonoBehaviour
         {
             transform.localScale = new Vector3(1, 1, 1);
         }
-        _attackSFX.PlayFeedbacks();
+        //_attackSFX.PlayFeedbacks();
         _attackAnimator.gameObject.SetActive(true);
         _hitScan.Scan();
     }
