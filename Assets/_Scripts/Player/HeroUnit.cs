@@ -3,6 +3,7 @@ using UnityEngine;
 using System;
 using MoreMountains.Tools;
 using UnityEngine.UI;
+using UnityEditor;
 
 public class HeroUnit : MonoBehaviour
 {
@@ -83,16 +84,28 @@ public class HeroUnit : MonoBehaviour
     {
         if (damage < 0) return;
         CurrentHealth -= damage;
+
         TestUI.Instance.UpdateBubbleBar(CurrentHealth, 0, MaxHealth);
-        if (CurrentHealth <= 0 || GameManager.Instance.IsHell)
+
+        if(CurrentHealth <= 0)
         {
-            //TODO change to Hellmode
-            Debug.Log("Into Hell");
+            if (!GameManager.Instance.IsHell)
+            {
+                GameManager.Instance.ChangeToHellLevel();
+
+            }
+            else
+            {
+                Debug.Log("GameOver");
+#if (UNITY_EDITOR)
+                EditorApplication.isPlaying = false;
+#else
+                Application.Quit();
+#endif
+            }
         }
-        else
-        {
-            Debug.Log("Game Over");
-        }
+        
+        
 
     }
 
