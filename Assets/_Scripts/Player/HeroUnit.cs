@@ -96,12 +96,19 @@ public class HeroUnit : MonoBehaviour
             }
             else
             {
-                Debug.Log("GameOver");
+                if(PlayerController.Instance.IsGodMode)
+                {
+                    Debug.Log("GameOver");
+                }
+                else
+                {
 #if (UNITY_EDITOR)
-                EditorApplication.isPlaying = false;
+                    EditorApplication.isPlaying = false;
 #else
                 Application.Quit();
 #endif
+                }
+
             }
         }
         

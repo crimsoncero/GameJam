@@ -12,6 +12,7 @@ public class PlayerController : Singleton<PlayerController>
     [field: SerializeField] public HeroUnit Unit { get; private set; }
     [field: SerializeField] public VisualsAnimator VisualsAnimator { get; private set; }
 
+    public bool IsGodMode = false;
     
     [SerializeField] private HeroMover _mover;
     [SerializeField] private AttackDirection _attackDirection;
