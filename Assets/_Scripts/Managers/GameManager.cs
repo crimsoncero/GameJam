@@ -46,7 +46,7 @@ public class GameManager : Singleton<GameManager>
                 Timer++;
                 
                 if(!IsHell)
-                    PlayerController.Instance.Unit.TakeDamage(_damageOnTick);
+                    PlayerController.Instance.Unit.TakeDamage(_damageOnTick, false);
                 
                 OnTimerTick?.Invoke(Timer);
             }

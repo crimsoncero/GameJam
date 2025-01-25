@@ -96,15 +96,18 @@ public class HeroUnit : MonoBehaviour
         _currentBloodlustDuration = _bloodlustDuration;
 
     }
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, bool gotHit = true)
     {
         if (damage < 0) return;
         CurrentHealth -= damage;
 
         TestUI.Instance.UpdateBubbleBar(CurrentHealth, 0, MaxHealth);
-
-        _camShake.AmplitudeGain = _intensity;
-        _currentShakeTimer = _shakeTimer;
+        if(gotHit)
+        {
+            _camShake.AmplitudeGain = _intensity;
+            _currentShakeTimer = _shakeTimer;
+        }
+      
 
         if(CurrentHealth <= 0)
         {
