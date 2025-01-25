@@ -6,25 +6,32 @@ using UnityEngine.Pool;
 
 public class EnemyUnit : MonoBehaviour
 {
-    [field: SerializeField] public EnemyData Data { get; private set; }
-
+    [field: SerializeField] public EnemyData GoodBunnyData { get; private set; }
+    [field: SerializeField] public EnemyData BadBunnyData { get; private set; }
+    [field: SerializeField] public EnemyData GoodUnicornData { get; private set; }
+    [field: SerializeField] public EnemyData BadUnicornData { get; private set; }
+    
 
     [Header("Components")]
     [SerializeField] private Rigidbody2D _rb2d;
-    public CircleCollider2D Collider;
     public PathfindingModule PathfindingModule;
     [SerializeField] private LayerMask _attackableLayers;
-    
+    [SerializeField] private VisualsAnimator _visualsAnimator;
+    [SerializeField] private GameObject _bunnyVisuals;
+    [SerializeField] private GameObject _unicornVisuals;
     private ObjectPool<EnemyUnit> _pool;
     private Coroutine _attackReset;
+    [SerializeField] private CircleCollider2D _circleCollider;
+    [SerializeField] private CapsuleCollider2D _capsuleCollider;
 
+    public EnemyData CurrentData { get; private set; }
     // STATS::
     public int CurrentHealth { get; private set; }
 
     // Stats computational properties (if complicated, use an intermediary method)
-    public int MaxHealth { get { return Data.BaseMaxHealth; } }
-    public float MaxSpeed { get { return Data.BaseMaxSpeed; } }
-    public int Power { get { return Data.BasePower; } }
+    public int MaxHealth { get { return CurrentData.BaseMaxHealth; } }
+    public float MaxSpeed { get { return CurrentData.BaseMaxSpeed; } }
+    public int Power { get { return CurrentData.BasePower; } }
     
     [Header("Gameplay Stats")]
     [SerializeField] private float _attackSpeed;
@@ -46,8 +53,25 @@ public class EnemyUnit : MonoBehaviour
 
         _pool = pool;
 
-        Data = data;
-        gameObject.name = $"{Data.name}";
+        CurrentData = data;
+        if(CurrentData.name == GoodBunnyData.name || CurrentData.name == BadBunnyData.name)
+        {
+            _bunnyVisuals.gameObject.SetActive(true);
+            _unicornVisuals.gameObject.SetActive(false);
+            _circleCollider = _bunnyVisuals.GetComponent<CircleCollider2D>();
+            _capsuleCollider = _bunnyVisuals.GetComponent<CapsuleCollider2D>();
+
+        }
+        else if(CurrentData.name == GoodUnicornData.name || CurrentData.name == BadUnicornData.name)
+        {
+            _bunnyVisuals.gameObject.SetActive(false);
+            _unicornVisuals.gameObject.SetActive(true);
+            _circleCollider = _unicornVisuals.GetComponent<CircleCollider2D>();
+            _capsuleCollider = _unicornVisuals.GetComponent<CapsuleCollider2D>();
+        }
+
+
+        gameObject.name = $"{CurrentData.name}";
 
         gameObject.transform.position = position;
 
@@ -63,10 +87,19 @@ public class EnemyUnit : MonoBehaviour
         
     }
 
+    public void OnChangeToHell()
+    {
+        if (CurrentData.name == GoodBunnyData.name)
+            CurrentData = BadBunnyData;
+        else
+            CurrentData = BadUnicornData;
+    }
+
     private void OnEnable()
     {
         GameManager.Instance.OnGamePaused += PauseEnemy;
         GameManager.Instance.OnGameResumed += ResumeEnemy;
+        GameManager.Instance.ChangedToHell += OnChangeToHell;
     }
     private void OnDisable()
     {
@@ -74,6 +107,8 @@ public class EnemyUnit : MonoBehaviour
         {
             GameManager.Instance.OnGamePaused -= PauseEnemy;
             GameManager.Instance.OnGameResumed -= ResumeEnemy;
+            GameManager.Instance.ChangedToHell -= OnChangeToHell;
+
         }
 
         DestroyUnit();
