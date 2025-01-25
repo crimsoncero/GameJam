@@ -12,4 +12,12 @@ public class VisualsAnimator : MonoBehaviour
             anim.SetBool(varName, value);
         }
     }
+
+    public void SetFloat(string varName, float value)
+    {
+        foreach (var anim in AnimList)
+        {
+            anim.SetFloat(varName, value);
+        }
+    }
 }

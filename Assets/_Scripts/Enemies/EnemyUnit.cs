@@ -46,6 +46,22 @@ public class EnemyUnit : MonoBehaviour
         if (_isDummy)
             CurrentHealth = MaxHealth;
     }
+
+    private void Update()
+    {
+
+        //flip
+        Vector3 scale = _visualsAnimator.gameObject.transform.localScale;
+        if (PathfindingModule.AIPath.velocity.x > 0)
+        {
+            scale.x = 1;
+        }
+        else if (PathfindingModule.AIPath.velocity.x < 0)
+        {
+            scale.x = -1;
+        }
+        _visualsAnimator.gameObject.transform.localScale = scale;
+    }
     public void Initialize(EnemyData data, Vector3 position, ObjectPool<EnemyUnit> pool)
     {
         if (data.IsUnityNull())
@@ -58,16 +74,14 @@ public class EnemyUnit : MonoBehaviour
         {
             _bunnyVisuals.gameObject.SetActive(true);
             _unicornVisuals.gameObject.SetActive(false);
-            _circleCollider = _bunnyVisuals.GetComponent<CircleCollider2D>();
-            _capsuleCollider = _bunnyVisuals.GetComponent<CapsuleCollider2D>();
+            
 
         }
         else if(CurrentData.name == GoodUnicornData.name || CurrentData.name == BadUnicornData.name)
         {
             _bunnyVisuals.gameObject.SetActive(false);
             _unicornVisuals.gameObject.SetActive(true);
-            _circleCollider = _unicornVisuals.GetComponent<CircleCollider2D>();
-            _capsuleCollider = _unicornVisuals.GetComponent<CapsuleCollider2D>();
+          
         }
 
 

@@ -132,8 +132,8 @@ GameObject:
   - component: {fileID: 1171083374919656187}
   - component: {fileID: -7659341251869531652}
   - component: {fileID: 1231239660535065941}
-  - component: {fileID: 632780971513284583}
-  - component: {fileID: 8552670528826960163}
+  - component: {fileID: 7601582277162211916}
+  - component: {fileID: 3059803792312154304}
   m_Layer: 8
   m_Name: Enemy Prefab
   m_TagString: Untagged
@@ -308,11 +308,11 @@ MonoBehaviour:
   _visualsAnimator: {fileID: 3286550161559827414}
   _bunnyVisuals: {fileID: 9200420373836002869}
   _unicornVisuals: {fileID: 8506919438103068158}
-  _circleCollider: {fileID: 632780971513284583}
-  _capsuleCollider: {fileID: 8552670528826960163}
+  _circleCollider: {fileID: 7601582277162211916}
+  _capsuleCollider: {fileID: 3059803792312154304}
   _attackSpeed: 1
   _isDummy: 0
---- !u!58 &632780971513284583
+--- !u!58 &7601582277162211916
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -332,7 +332,7 @@ CircleCollider2D:
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 375
   m_ForceReceiveLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -348,7 +348,7 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
---- !u!70 &8552670528826960163
+--- !u!70 &3059803792312154304
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -368,22 +368,22 @@ CapsuleCollider2D:
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   m_ForceReceiveLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   m_ContactCaptureLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 128
   m_CallbackLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 128
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 1}
+  m_Offset: {x: 0, y: 0.5}
+  m_Size: {x: 1, y: 2}
   m_Direction: 0
 --- !u!1 &8506919438103068158
 GameObject:
@@ -426,7 +426,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8506919438103068158}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -462,7 +462,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8506919438103068158}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -533,7 +533,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9200420373836002869}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -569,7 +569,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9200420373836002869}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
