@@ -2837,7 +2837,7 @@ MonoBehaviour:
   <Data>k__BackingField: {fileID: 11400000, guid: 9b61c84f832dee941b41c15e6e8d78f9, type: 2}
   <Unit>k__BackingField: {fileID: 740804093}
   <VisualsAnimator>k__BackingField: {fileID: 1068858547}
-  IsGodMode: 1
+  IsGodMode: 0
   _mover: {fileID: 740804092}
   _attackDirection: {fileID: 626781517}
 --- !u!4 &740804088
