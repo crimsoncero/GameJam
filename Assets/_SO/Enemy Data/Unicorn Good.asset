@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Unicorn Good
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Unicorn
-  <BaseMaxHealth>k__BackingField: 3
+  <BaseMaxHealth>k__BackingField: 8
   <BaseMaxSpeed>k__BackingField: 8
   <BasePower>k__BackingField: 4

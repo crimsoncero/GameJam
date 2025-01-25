@@ -7,9 +7,12 @@ public class CircularProgressBar : MonoBehaviour
     [SerializeField] private Image _foreground;
     [SerializeField] private float _targetFade;
     [SerializeField] private float _breathDuration;
+    [SerializeField] private Image _brainGood;
+    [SerializeField] private Image _brainBad;
     private void Start()
     {
         _foreground.DOFade(_targetFade, _breathDuration).SetEase(Ease.InOutSine).SetLoops(-1,LoopType.Yoyo);
+        GameManager.Instance.ChangedToHell += OnHell;
     }
     public void UpdateBar(float value, float min, float max)
     {
@@ -20,6 +23,13 @@ public class CircularProgressBar : MonoBehaviour
         scale.x = scaleChange;
         scale.y = scaleChange;
         _foreground.transform.localScale = scale;
+    }
+
+    public void OnHell()
+    {
+        _foreground.enabled = false;
+        _brainGood.enabled = false;
+        _brainBad.enabled = true;
     }
 
 }
